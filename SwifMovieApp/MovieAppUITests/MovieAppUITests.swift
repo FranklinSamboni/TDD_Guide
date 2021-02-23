@@ -26,6 +26,23 @@ class MovieAppUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testClickOnCollectionViewItemIsDetected() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        let collectionViewsQuery = XCUIApplication().collectionViews
+        let cell = collectionViewsQuery.children(matching: .cell).element(boundBy: 3)
+
+        XCUIApplication().collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        
+        wait(for: [XCTestExpectation], timeout: <#T##TimeInterval#>)
+        
+        XCTAssert(cell.exists, "La celda debe existir")
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
